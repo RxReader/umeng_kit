@@ -1,6 +1,49 @@
 # umeng_kit
 
-A new flutter plugin project.
+Flutter plugin for Umeng.
+
+## Android
+
+```
+...
+android {
+    ...
+    defaultConfig {
+        ...
+        manifestPlaceholders = [
+                UMENG_APPKEY : "your umeng appkey",
+        ]
+        ...
+    }
+    ...
+}
+...
+```
+
+## iOS
+
+```
+//  app.xcconfig
+UMENG_APPKEY=your umeng appkey
+```
+
+```
+//  Debug.xcconfig
+#include "app.xcconfig"
+```
+
+```
+//  Release.xcconfig
+#include "app.xcconfig"
+```
+
+```xml
+	<!-- Info.plist -->
+	<key>UMENG_APPKEY</key>
+	<string>$(UMENG_APPKEY)</string>
+```
+
+## Flutter
 
 ## Getting Started
 

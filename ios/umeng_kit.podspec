@@ -18,6 +18,17 @@ A new flutter plugin project.
   s.dependency 'Flutter'
   s.platform = :ios, '8.0'
 
+  #
+#  s.static_framework = true
+  s.subspec 'vendor' do |sp|
+    sp.dependency 'UMCommon', '~> 7.2.5'
+    sp.dependency 'UMDevice', '~> 1.1.0'
+
+#    sp.dependency 'UMAPM', '~> 1.1.1'
+
+    sp.dependency 'UMCCommonLog', '~> 2.0.0'
+  end
+
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
 end

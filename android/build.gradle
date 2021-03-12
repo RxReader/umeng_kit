@@ -5,6 +5,9 @@ buildscript {
     repositories {
         google()
         jcenter()
+
+        // 友盟
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
 
     dependencies {
@@ -16,6 +19,9 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+
+        // 友盟
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
 }
 
@@ -26,8 +32,31 @@ android {
 
     defaultConfig {
         minSdkVersion 16
+
+        // library 混淆 -> 随 library 引用，自动添加到 apk 打包混淆
+        consumerProguardFiles 'consumer-rules.pro'
     }
+
     lintOptions {
         disable 'InvalidPackage'
     }
+
+    flavorDimensions 'vendor'
+
+    productFlavors {
+        vendor {
+            dimension 'vendor'
+
+            // library 混淆 -> 随 library 引用，自动添加到 apk 打包混淆
+            consumerProguardFiles 'consumer-vendor-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //
+    vendorImplementation  'com.umeng.umsdk:common:9.3.6' // 必选
+    vendorImplementation  'com.umeng.umsdk:asms:1.2.1' // 必选
+
+//    vendorImplementation 'com.umeng.umsdk:apm:1.1.1'//可选（集成U-APM）
 }

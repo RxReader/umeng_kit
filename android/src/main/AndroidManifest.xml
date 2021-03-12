@@ -1,3 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="io.github.v7lin.umeng_kit">
+    package="io.github.v7lin.umeng_kit">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="\${UMENG_APPKEY}" />
+
+        <provider
+            android:name=".UmengInitProvider"
+            android:authorities="${applicationId}.UmengInitProvider"
+            android:exported="false" />
+    </application>
 </manifest>

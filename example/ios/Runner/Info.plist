@@ -41,5 +41,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UMENG_APPKEY</key>
+	<string>$(UMENG_APPKEY)</string>
 </dict>
 </plist>
