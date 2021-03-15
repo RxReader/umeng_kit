@@ -65,7 +65,11 @@ public final class UmengKitPlugin implements FlutterPlugin, MethodCallHandler {
         } else if ("trackEvent".equals(call.method)) {
             String eventId = call.argument("event_id");
             Map<String, Object> eventParams = call.argument("event_params");
-            MobclickAgent.onEventObject(applicationContext, eventId, eventParams);
+            if (eventParams != null && !eventParams.isEmpty()) {
+                MobclickAgent.onEventObject(applicationContext, eventId, eventParams);
+            } else {
+                MobclickAgent.onEvent(applicationContext, eventId);
+            }
             result.success(null);
         } else if ("getDeviceId".equals(call.method)) {
             String deviceId = DeviceConfig.getDeviceId(applicationContext);
