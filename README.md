@@ -4,6 +4,8 @@ Flutter plugin for Umeng.
 
 ## Android
 
+* 日，特喵的，我的nova 4上取到的deviceId是一串0，实时统计也没有数据。
+
 * 混淆
 
 > 引自友盟官方原文：
