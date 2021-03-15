@@ -52,7 +52,7 @@ public final class UmengKitPlugin implements FlutterPlugin, MethodCallHandler {
             boolean logEnabled = call.argument("log_enabled");
             UMConfigure.setLogEnabled(logEnabled);
             UMConfigure.init(applicationContext, appKey, channelId, UMConfigure.DEVICE_TYPE_PHONE, null);
-            MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.LEGACY_MANUAL);
+            MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.MANUAL);
             result.success(null);
         } else if ("startPageTracking".equals(call.method)) {
             String pageName = call.argument("page_name");
