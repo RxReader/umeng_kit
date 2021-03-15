@@ -58,5 +58,6 @@ dependencies {
     vendorImplementation  'com.umeng.umsdk:common:9.3.6' // 必选
     vendorImplementation  'com.umeng.umsdk:asms:1.2.1' // 必选
 
-//    vendorImplementation 'com.umeng.umsdk:apm:1.1.1'//可选（集成U-APM）
+//    vendorImplementation 'com.umeng.umsdk:abtest:1.0.0' // ABTest功能依赖(可选)
+//    vendorImplementation 'com.umeng.umsdk:apm:1.1.1' // 应用性能监控SDK依赖(可选)
 }

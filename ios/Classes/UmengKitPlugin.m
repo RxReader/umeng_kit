@@ -13,9 +13,9 @@
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   if ([@"init" isEqualToString:call.method]) {
-      NSString *appkey = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"UMENG_APPKEY"];
+      NSString *appKey = call.arguments[@"app_key"];
       NSString *channelId = call.arguments[@"channel_id"];
-      [UMConfigure initWithAppkey:appkey channel:channelId];
+      [UMConfigure initWithAppkey:appKey channel:channelId];
       [MobClick setAutoPageEnabled:NO];
       result(nil);
   } else if ([@"setLogEnabled" isEqualToString:call.method]) {
@@ -35,6 +35,9 @@
       NSDictionary *eventParams = call.arguments[@"event_params"];
       [MobClick event:eventId attributes:eventParams];
       result(nil);
+  } else if ([@"getDeviceId" isEqualToString:call.method]) {
+      NSString *deviceId =[UMConfigure deviceIDForIntegration];
+      result(deviceId);
   } else {
       result(FlutterMethodNotImplemented);
   }

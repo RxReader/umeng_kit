@@ -14,8 +14,7 @@ import com.umeng.commonsdk.utils.UMUtils;
 public final class UmengInitProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
-        String appkey = UMUtils.getAppkeyByXML(getContext());
-        UMConfigure.preInit(getContext(), appkey, null);
+        UMConfigure.preInit(getContext(), null, null);
         return false;
     }
 

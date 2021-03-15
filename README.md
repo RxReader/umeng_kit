@@ -4,23 +4,6 @@ Flutter plugin for Umeng.
 
 ## Android
 
-* 配置
-```
-...
-android {
-    ...
-    defaultConfig {
-        ...
-        manifestPlaceholders = [
-                UMENG_APPKEY : "your umeng appkey",
-        ]
-        ...
-    }
-    ...
-}
-...
-```
-
 * 混淆
 
 > 引自友盟官方原文：
@@ -36,27 +19,6 @@ android {
 ```
 
 ## iOS
-
-```
-//  app.xcconfig
-UMENG_APPKEY=your umeng appkey
-```
-
-```
-//  Debug.xcconfig
-#include "app.xcconfig"
-```
-
-```
-//  Release.xcconfig
-#include "app.xcconfig"
-```
-
-```xml
-	<!-- Info.plist -->
-	<key>UMENG_APPKEY</key>
-	<string>$(UMENG_APPKEY)</string>
-```
 
 ## Flutter
 

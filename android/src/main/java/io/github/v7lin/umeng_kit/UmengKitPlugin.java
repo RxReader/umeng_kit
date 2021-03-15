@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
-import com.umeng.commonsdk.utils.UMUtils;
+import com.umeng.commonsdk.statistics.common.DeviceConfig;
 
 import java.util.Map;
 
@@ -47,9 +47,9 @@ public final class UmengKitPlugin implements FlutterPlugin, MethodCallHandler {
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
         if ("init".equals(call.method)) {
-            String appkey = UMUtils.getAppkeyByXML(applicationContext);
+            String appKey = call.argument("app_key");
             String channelId = call.argument("channel_id");
-            UMConfigure.init(applicationContext, appkey, channelId, UMConfigure.DEVICE_TYPE_PHONE, null);
+            UMConfigure.init(applicationContext, appKey, channelId, UMConfigure.DEVICE_TYPE_PHONE, null);
             MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.MANUAL);
             result.success(null);
         } else if ("setLogEnabled".equals(call.method)) {
@@ -69,6 +69,12 @@ public final class UmengKitPlugin implements FlutterPlugin, MethodCallHandler {
             Map<String, Object> eventParams = call.argument("event_params");
             MobclickAgent.onEventObject(applicationContext, eventId, eventParams);
             result.success(null);
+        } else if ("getDeviceId".equals(call.method)) {
+            String deviceId = DeviceConfig.getDeviceIdForGeneral(applicationContext);
+            result.success(deviceId);
+        } else if ("getMac".equals(call.method)) {
+            String mac = DeviceConfig.getMac(applicationContext);
+            result.success(mac);
         } else {
             result.notImplemented();
         }
