@@ -70,7 +70,7 @@ public final class UmengKitPlugin implements FlutterPlugin, MethodCallHandler {
             MobclickAgent.onEventObject(applicationContext, eventId, eventParams);
             result.success(null);
         } else if ("getDeviceId".equals(call.method)) {
-            String deviceId = DeviceConfig.getDeviceIdForGeneral(applicationContext);
+            String deviceId = DeviceConfig.getDeviceId(applicationContext);
             result.success(deviceId);
         } else if ("getMac".equals(call.method)) {
             String mac = DeviceConfig.getMac(applicationContext);
