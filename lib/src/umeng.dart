@@ -14,17 +14,13 @@ class Umeng {
   static Future<void> init({
     @required String appKey,
     String channelId,
+    bool logEnabled = false,
   }) {
     assert(appKey?.isNotEmpty ?? false);
     return _channel.invokeMethod<void>('init', <String, dynamic>{
       'app_key': appKey,
       if (channelId?.isNotEmpty ?? false) 'channel_id': channelId,
-    });
-  }
-
-  static Future<void> setLogEnabled({@required bool enabled}) {
-    return _channel.invokeMethod<void>('setLogEnabled', <String, dynamic>{
-      'enabled': enabled,
+      'log_enabled': logEnabled,
     });
   }
 

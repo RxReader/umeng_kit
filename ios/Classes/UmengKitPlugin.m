@@ -15,12 +15,10 @@
   if ([@"init" isEqualToString:call.method]) {
       NSString *appKey = call.arguments[@"app_key"];
       NSString *channelId = call.arguments[@"channel_id"];
+      NSNumber *logEnabled = call.arguments[@"log_enabled"];
+      [UMConfigure setLogEnabled:logEnabled.boolValue];
       [UMConfigure initWithAppkey:appKey channel:channelId];
       [MobClick setAutoPageEnabled:NO];
-      result(nil);
-  } else if ([@"setLogEnabled" isEqualToString:call.method]) {
-      NSNumber *enabled = call.arguments[@"enabled"];
-      [UMConfigure setLogEnabled:enabled.boolValue];
       result(nil);
   } else if ([@"startPageTracking" isEqualToString:call.method]) {
       NSString *pageName = call.arguments[@"page_name"];
