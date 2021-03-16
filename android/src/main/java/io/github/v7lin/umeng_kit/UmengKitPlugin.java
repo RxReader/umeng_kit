@@ -51,6 +51,7 @@ public final class UmengKitPlugin implements FlutterPlugin, MethodCallHandler {
             String channelId = call.argument("channel_id");
             boolean logEnabled = call.argument("log_enabled");
             UMConfigure.setLogEnabled(logEnabled);
+            UMConfigure.preInit(applicationContext, appKey, channelId);
             UMConfigure.init(applicationContext, appKey, channelId, UMConfigure.DEVICE_TYPE_PHONE, null);
             MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.MANUAL);
             result.success(null);
